@@ -11,9 +11,7 @@
     <script src="{{ asset('public/js/app.js') }}" defer></script>
     @yield('css')
     <style>
-        body{
-            background-color: #f2f2f2;
-        }
+        
     </style>
     <livewire:styles/>
 </head>

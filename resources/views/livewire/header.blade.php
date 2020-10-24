@@ -22,7 +22,7 @@
                     <a class="nav-link" href="#">Login </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Daftar </a>
+                    <a class="nav-link" href="{{ route('daftar')}}">Daftar </a>
                 </li>
             </ul>
         </div>
