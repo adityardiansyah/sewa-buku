@@ -11,7 +11,12 @@
     <script src="{{ asset('public/js/app.js') }}" defer></script>
     @yield('css')
     <style>
-        
+        .nav-photo{
+            border-radius: 50%;
+            overflow: hidden;
+            width: 30%;
+            margin-left: 4px;
+        }
     </style>
     <livewire:styles/>
 </head>
