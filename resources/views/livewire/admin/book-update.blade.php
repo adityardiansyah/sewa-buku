@@ -9,8 +9,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <h4 class="card-title">Tambah Buku</h4>
-                            <form class="forms-sample" wire:submit.prevent="store" enctype="multipart/form-data">
+                            <h4 class="card-title">Edit Buku</h4>
+                            <form class="forms-sample" wire:submit.prevent="update" enctype="multipart/form-data">
+                            <input type="hidden" wire:model="id_buku">
                             <div class="row">
                                 <div class="col-12">
                                     @if ($errors->any())
@@ -43,7 +44,17 @@
                                 <div class="col-md-3">
                                     <div class="form-group" wire:ignore>
                                     <label for="induk">Foto Buku</label>
-                                    <input type="file" class="dropify" wire:model="image" multiple/>
+                                    <input type="file" class="dropify" wire:model="imageUpdate" multiple/>
+                                    </div>
+                                    <div class="row">
+                                        @foreach ($image as $item)
+                                        <div class="col-6 p-1">
+                                            <img src="{{ asset('storage/'.$item) }}" class="img-fluid" alt="">
+                                            <button type="button" class="btn btn-inverse-danger btn-block" wire:click="delete({{$id_buku}}, '{{ $item }}')" data-toggle="tooltip" data-placement="top" title="Hapus">
+                                                <i class="mdi mdi-trash-can-outline"></i>
+                                            </button>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
                                 <div class="col-md-9">
@@ -70,9 +81,9 @@
                                             <div class="form-group">
                                             <label for="">Kategori Buku</label>
                                             <select class="form-control form-control-lg" id="" wire:model="kategori_id" required>
-                                                <option value="0">Tidak Ada</option>
+                                                <option value="0" {{ '0' == $kategori_id? 'selected': '' }}>Tidak Ada</option>
                                                 @foreach ($kategori as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                    <option value="{{ $item->id }}" {{ $item->id == $kategori_id? 'selected': '' }}>{{ $item->nama }}</option>
                                                 @endforeach
                                             </select>
                                             </div>
@@ -80,39 +91,48 @@
                                         <div class="col-4">
                                             <div class="form-group">
                                             <label for="">Jenis Buku</label>
-                                            <select class="form-control form-control-lg" id="jenis" wire:model="jenis_id" required>
-                                                <option value="0">Tidak Ada</option>
+                                            <select class="form-control form-control-lg" id="" wire:model="jenis_id" required>
+                                                <option value="0" {{ '0' == $jenis_id? 'selected': '' }}>Tidak Ada</option>
                                                 @foreach ($jenis as $item)
-                                                    <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                                    <option value="{{ $item->id }}" {{ $item->id == $jenis_id? 'selected': '' }}>{{ $item->nama }}</option>
                                                 @endforeach
                                             </select>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div class="form-group">
                                             <label for="">Tahun Buku</label>
                                             <input type="text" class="form-control" wire:model="tahun" placeholder="Tahun Buku" required>
                                             </div>
                                         </div>
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div class="form-group">
                                             <label for="">Jumlah Halaman</label>
                                             <input type="text" class="form-control" wire:model="jml_halaman" placeholder="Jumlah Halaman" required>
                                             </div>
                                         </div>
                                         @if($jenis_id == 2)
-                                        <div class="col-4">
+                                        <div class="col-3">
                                             <div class="form-group">
-                                            <label for="">Harga Sewa</label>
-                                            <input type="text" class="form-control" wire:model="harga" id="harga" placeholder="Harga Buku" required>
+                                                <label for="">Harga Buku</label>
+                                                <input type="text" class="form-control" wire:model="harga" placeholder="Harga Buku" required>
                                             </div>
                                         </div>
                                         @endif
-                                        <br>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                            <label for="">Status Buku</label>
+                                            <select class="form-control form-control-lg" id="" wire:model="status" required>
+                                                <option value="0" {{ '0' == $status? 'selected': '' }}>Aktif</option>
+                                                <option value="1" {{ '1' == $status? 'selected': '' }}>Tidak Aktif</option>
+                                            </select>
+                                            </div>
+                                        </div>
                                         <div class="col-12">
                                             <div class="form-group" wire:ignore>
                                             <label for="">Deskripsi Buku</label>
                                             <textarea id="summernote" name="deskripsi" id="deskripsi" required>
+                                                {{ $deskripsi }}
                                             </textarea>
                                             </div>
                                         </div>
@@ -132,6 +152,8 @@
 </div>
 @section('js')
 <script>
+    $(document).ready(function(){
+
     $('#summernote').summernote({
         tabsize: 2,
         height: 250,
@@ -149,10 +171,7 @@
             @this.set('deskripsi', contents);
         }
     }
-    });    
-    $('#harga').hide();
-    $('#jenis').on('change',function(){
-        @this.set('jenis_id', this.value);
-    });
+        });    
+});    
 </script>
 @endsection

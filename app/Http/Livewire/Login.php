@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
@@ -18,7 +19,12 @@ class Login extends Component
         ]);
 
         if(Auth::attempt(['email' => $this->email, 'password' => $this->password])){
-            return redirect()->route('index');
+            $cek = User::where('email',$this->email)->first();
+            if($cek->hak_akses == 1){
+                return redirect()->route('dashboard');
+            }else{
+                return redirect()->route('index');
+            }
         }else{
             session()->flash('error','Alamat Email atau Password anda salah!');
             return redirect()->route('login');

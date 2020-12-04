@@ -3,7 +3,7 @@
         <div class="col-12 grid-margin">
             <div class="row">
                 <div class="col-md-8">
-                    <h3><i class="mdi mdi-book-multiple menu-icon"></i> Daftar Buku</h3>
+                    <h3><i class="mdi mdi-book-multiple menu-icon"></i> Daftar Barter Buku</h3>
                 </div>
                 <div class="col-md-4 text-right">
                     <div class="form-group">

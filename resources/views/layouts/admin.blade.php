@@ -48,22 +48,25 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item nav-profile dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                    <li class="nav-item nav-profile">
+                        <a class="nav-link " href="#" >
+                            <span class="nav-profile-name mr-2">Hi, {{ Auth::user()->nama }}</span>
                             <img src="{{ asset('public/assets/images/user.jpg') }}" alt="profile" />
-                            <span class="nav-profile-name">Evan Morales</span>
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                        {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
                                 <i class="mdi mdi-settings text-primary"></i>
                                 Settings
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                                 <i class="mdi mdi-logout text-primary"></i>
                                 Logout
                             </a>
-                        </div>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div> --}}
                     </li>
                 </ul>
             </div>
@@ -79,6 +82,7 @@
                             <span class="menu-title">Dashboard</span>
                         </a>
                     </li>
+                    @if(Auth::user()->hak_akses == 1)
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('user') }}">
                             <i class="mdi mdi-account menu-icon"></i>
@@ -91,35 +95,41 @@
                             <span class="menu-title">Kategori</span>
                         </a>
                     </li>
+                    @endif
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('book-create') }}">
+                        <a class="nav-link" data-toggle="collapse" href="#add-buku" aria-expanded="false" aria-controls="add-buku">
                             <i class="mdi mdi-book-plus menu-icon"></i>
                             <span class="menu-title">Tambah Buku</span>
+                            <i class="menu-arrow"></i>
                         </a>
+                        <div class="collapse" id="add-buku">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('book-create') }}">Sewa / Pinjaman</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('book-barter-create') }}">Tukar Buku / Barter</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('book-index') }}">
-                            <i class="mdi mdi-book-multiple menu-icon"></i>
+                        <a class="nav-link" data-toggle="collapse" href="#list-buku" aria-expanded="false" aria-controls="list-buku">
+                            <i class="mdi mdi-book-plus menu-icon"></i>
                             <span class="menu-title">Daftar Buku</span>
+                            <i class="menu-arrow"></i>
                         </a>
+                        <div class="collapse" id="list-buku">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('book-index') }}">Sewa / Pinjam</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('book-barter-index') }}">Tukar Buku / Barter</a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">
-                            <i class="mdi mdi-book-open-page-variant menu-icon"></i>
-                            <span class="menu-title">Tukar Buku</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">
-                            <i class="mdi mdi-book-open-variant menu-icon"></i>
-                            <span class="menu-title">Daftar Tukar Buku</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/') }}">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
                             <i class="mdi mdi-logout menu-icon"></i>
                             <span class="menu-title">Logout</span>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
                 </ul>
             </nav>
@@ -162,6 +172,8 @@
     <script src="{{ asset('public/assets/js/tooltips.js') }} "></script>
     <script src="{{ asset('public/assets/js/popover.js') }} "></script>
     <script src="{{ asset('public/assets/js/dropify.js') }} "></script>
+    <script src="{{ asset('public/assets/js/editorDemo.js') }} "></script>
+    <script src="{{ asset('public/assets/vendors/summernote/dist/summernote-bs4.min.js') }}"></script>
     <!-- End custom js for this page-->
     <livewire:scripts/>
     @yield('js')
