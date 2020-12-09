@@ -18,12 +18,14 @@ Auth::routes();
 
 Route::livewire('/','index')->layout( 'layouts.master')->name('index');
 Route::livewire('/daftar', 'daftar')->layout('layouts.app')->name('daftar');
-Route:: livewire('/login', 'login')->layout('layouts.app')->name('login');
-Route::livewire('/search', 'search')->layout('layouts.app')->name('search');
+Route::livewire('/login', 'login')->layout('layouts.app')->name('login');
+Route::get('/search', 'HomeController@search')->layout('layouts.master')->name('search');
+Route::livewire('/detail/{id}', 'detail-book')->layout('layouts.master')->name('detail-book');
 
 
 // ---------------- DASHBOARD -------------------------
 Route::group(['middleware' => 'auth'], function () {
+    Route::livewire('/booking', 'booking')->layout('layouts.master')->name('booking');
     Route::livewire('/dashboard', 'admin.index')->layout('layouts.admin')->name('dashboard');
     Route::livewire('/category', 'admin.category')->layout('layouts.admin')->name('category');
     Route::livewire('/user', 'admin.user')->layout('layouts.admin')->name('user');

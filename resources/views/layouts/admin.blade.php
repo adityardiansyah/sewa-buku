@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -11,10 +9,6 @@
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css') }} ">
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.addons.css') }}">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
     <link rel="stylesheet" href="{{ asset('public/assets/css/vertical-layout-light/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="../../images/favicon.png" />
@@ -48,25 +42,17 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav navbar-nav-right">
-                    <li class="nav-item nav-profile">
-                        <a class="nav-link " href="#" >
+                    <li class="nav-item nav-profile dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
                             <span class="nav-profile-name mr-2">Hi, {{ Auth::user()->nama }}</span>
                             <img src="{{ asset('public/assets/images/user.jpg') }}" alt="profile" />
                         </a>
-                        {{-- <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item">
-                                <i class="mdi mdi-settings text-primary"></i>
-                                Settings
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                            <a class="dropdown-item" href="{{ url('/') }}">
+                                <i class="mdi mdi-view-quilt text-primary"></i>
+                                Halaman Utama
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                <i class="mdi mdi-logout text-primary"></i>
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div> --}}
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -177,7 +163,9 @@
     <!-- End custom js for this page-->
     <livewire:scripts/>
     @yield('js')
-    
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
 </body>
 
 </html>

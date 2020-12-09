@@ -13,4 +13,9 @@ class Buku extends Model
     {
         return $this->belongsTo('App\Category');
     }
+
+    public function jenis()
+    {
+        return $this->belongsTo('App\Jenis');
+    }
 }

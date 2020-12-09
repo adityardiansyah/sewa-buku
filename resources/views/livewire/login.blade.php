@@ -10,7 +10,7 @@
                         <h5 class="text-center"> <i class="fa fa-user-circle"></i> LOGIN</h5>
                         <hr>
                         <form wire:submit.prevent="login">
-
+                            <input type="hidden" value="{{ Request::get('type') }}" name="type" wire:model="type">
                             <div class="form-group">
                                 <label class="font-weight-bold">ALAMAT EMAIL</label>
                                 <input type="text" wire:model.lazy="email"
@@ -36,9 +36,14 @@
 
                             <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
                         </form>
+                        <br>
+                        <small>Belum punya akun? <a href="{{ url('daftar?type='.Request::get('type')) }}">Daftar</a></small>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section('js')
+    <script></script>
+@endsection

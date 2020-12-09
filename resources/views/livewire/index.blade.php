@@ -24,49 +24,18 @@
         </div>
     </div>
     <div class="row mt-4">
+        @foreach ($news as $item)
         <div class="col-md-3">
             <div class="card">
-                <img class="card-img-top" src="{{ asset('public/assets/images/buku/123.jpg') }}" alt="Card image cap">
+                <img class="card-img-top img-item" src="{{ asset('storage/'.$item->image) }}" alt="Card image cap">
                 <div class="card-body">
-                    <h5>Remember Us</h5>
+                    <a href="{{ url('detail/'.$item->id) }}" class="judul"><h5>{{ $item->judul }}</h5></a>
                     <span style="font-size: 11pt; font-weight: lighter;">Disewakan</span>
-                    <h5>Rp30.000</h5>
+                    <h5 class="text-primary">Rp {{ number_format($item->harga, 0,'.','.') }}</h5>
                     <p class="card-text text-right" style="font-size: 10pt;"><i class="fa fa-map-marker-alt"></i> Kab. Sidoarjo</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset('public/assets/images/buku/123.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5>Remember Us</h5>
-                    <span style="font-size: 11pt; font-weight: lighter;">Disewakan</span>
-                    <h5>Rp30.000</h5>
-                    <p class="card-text text-right" style="font-size: 10pt;"><i class="fa fa-map-marker-alt"></i> Kab. Sidoarjo</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset('public/assets/images/buku/123.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5>Remember Us</h5>
-                    <span style="font-size: 11pt; font-weight: lighter;">Disewakan</span>
-                    <h5>Rp30.000</h5>
-                    <p class="card-text text-right" style="font-size: 10pt;"><i class="fa fa-map-marker-alt"></i> Kab. Sidoarjo</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <div class="card">
-                <img class="card-img-top" src="{{ asset('public/assets/images/buku/123.jpg') }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5>Remember Us</h5>
-                    <span style="font-size: 11pt; font-weight: lighter;">Disewakan</span>
-                    <h5>Rp30.000</h5>
-                    <p class="card-text text-right" style="font-size: 10pt;"><i class="fa fa-map-marker-alt"></i> Kab. Sidoarjo</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 </div>

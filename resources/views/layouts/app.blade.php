@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - Platform Sewa Menyewakan Buku</title>
-    <link rel="stylesheet" href="{{ asset('public/assets/dist/css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('public/assets/dist/css/bootstrap.min.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/iconfonts/mdi/font/css/materialdesignicons.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.addons.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/css/vertical-layout-light/style.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/css/fontawesome-all.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
     <script src="{{ asset('public/js/app.js') }}" defer></script>
