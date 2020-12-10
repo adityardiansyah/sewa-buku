@@ -57,3 +57,19 @@ nav{
 .img-item:hover{
     transform: scale(1.1);
 }
+.list ul{
+    list-style: none;
+    padding: 0;
+}
+.list ul li{
+    padding: 8px;
+}
+.list ul a{
+    color:#000;
+}
+.list ul a:hover li{
+    background: #d9d9d9;
+}
+.list ul a{
+    text-decoration: none;
+}

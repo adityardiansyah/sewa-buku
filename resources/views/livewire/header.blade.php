@@ -9,8 +9,15 @@
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-4 mt-2 mt-lg-0">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Kategori <span class="sr-only">(current)</span></a>
+                <li class="nav-item dropdown mr-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuKategori" role="button" data-toggle="dropdown" data-display="static" aria-haspopup="true" aria-expanded="false">
+                    Kategori
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuKategori">
+                        @foreach ($kategori as $item)
+                            <a class="dropdown-item" href="{{ url('kategori/'.$item->slug) }}">{{ $item->nama }}</a>                     
+                        @endforeach
+                    </div>
                 </li>
             </ul>
             <form class="form-inline ml-4 my-2 my-lg-0 cari mr-auto" method="GET" action="{{ route('search') }}">

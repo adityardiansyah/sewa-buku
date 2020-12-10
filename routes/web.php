@@ -20,12 +20,14 @@ Route::livewire('/','index')->layout( 'layouts.master')->name('index');
 Route::livewire('/daftar', 'daftar')->layout('layouts.app')->name('daftar');
 Route::livewire('/login', 'login')->layout('layouts.app')->name('login');
 Route::get('/search', 'HomeController@search')->layout('layouts.master')->name('search');
+Route::get('/kategori/{slug}', 'HomeController@kategori')->layout('layouts.master')->name('kategori');
 Route::livewire('/detail/{id}', 'detail-book')->layout('layouts.master')->name('detail-book');
 
 
 // ---------------- DASHBOARD -------------------------
 Route::group(['middleware' => 'auth'], function () {
     Route::livewire('/booking', 'booking')->layout('layouts.master')->name('booking');
+    Route::livewire('/favorit', 'favorit')->layout('layouts.master')->name('favorit');
     Route::livewire('/dashboard', 'admin.index')->layout('layouts.admin')->name('dashboard');
     Route::livewire('/category', 'admin.category')->layout('layouts.admin')->name('category');
     Route::livewire('/user', 'admin.user')->layout('layouts.admin')->name('user');

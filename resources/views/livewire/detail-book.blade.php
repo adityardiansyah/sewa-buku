@@ -48,8 +48,26 @@
         <div class="col-8">
             <div class="card">
                 <div class="card-body">
+                    @if(session()->has('message'))
+                    @php
+                        $message = Session::get('message');
+                    @endphp
+                        @if ($message['type'] == 'success')
+                            <div class="alert alert-success">
+                            {{ $message['content'] }}
+                            </div>
+                        @else
+                            <div class="alert alert-danger">
+                            {{ $message['content'] }}
+                            </div>
+                        @endif
+                        <br>
+                    @endif
+                        <button type="button" class="btn btn-outline-danger btn-rounded btn-icon float-right {{ $favoritStatus ? 'active' : ''}}" wire:click="favorit({{ $id_buku }})">
+                        <i class="mdi mdi-heart-outline"></i>
+                    </button>
                     @if(!$bookingStatus)
-                    <span class="badge badge-warning float-right">
+                    <span class="badge badge-warning float-right mr-4">
                         Sudah Booking
                     </span>
                     @endif
