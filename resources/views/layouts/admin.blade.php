@@ -29,18 +29,6 @@
                 <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                     <span class="mdi mdi-menu"></span>
                 </button>
-                <ul class="navbar-nav mr-lg-2">
-                    <li class="nav-item nav-search d-none d-lg-block">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="search">
-                                    <i class="mdi mdi-magnify"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="search" aria-label="search" aria-describedby="search">
-                        </div>
-                    </li>
-                </ul>
                 <ul class="navbar-nav navbar-nav-right">
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
@@ -66,6 +54,12 @@
                         <a class="nav-link" href="{{ url('dashboard') }}">
                             <i class="mdi mdi-view-quilt menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('admin/booking') }}">
+                            <i class="mdi mdi-format-list-checks menu-icon"></i>
+                            <span class="menu-title">Daftar Booking</span>
                         </a>
                     </li>
                     @if(Auth::user()->hak_akses == 1)

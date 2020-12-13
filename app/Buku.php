@@ -19,3 +19,9 @@ class Buku extends Model
         return $this->belongsTo('App\Jenis');
     }
 }
+
+// Status
+// 0 = Aktif
+// 1 = Disewa
+// 2 = Dipinjam
+// 5 = Tidak Aktif

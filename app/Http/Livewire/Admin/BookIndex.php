@@ -17,8 +17,25 @@ class BookIndex extends Component
 
     public function render()
     {
+        $data = ($this->search == '') ? Buku::latest()->where('user_id', Auth::user()->id)->where('jenis_id', '!=', 3)->paginate(10) : Buku::latest()->where('judul', 'LIKE', '%' . $this->search . '%')->where('user_id', Auth::user()->id)->where('jenis_id', '!=', 3)->paginate(10);
+        foreach ($data as $key => $value) {
+            if ($value->status == 0) {
+                $value->status_bookings = 'Aktif';
+                $value->badge_booking = 'badge-warning';
+            } elseif ($value->status == 1) {
+                $value->status_bookings = 'Disewa';
+                $value->badge_booking = 'badge-primary';
+            } elseif ($value->status == 2) {
+                $value->status_bookings = 'Dipinjam';
+                $value->badge_booking = 'badge-primary';
+            } elseif ($value->status == 5) {
+                $value->status_bookings = 'Tidak Aktif';
+                $value->badge_booking = 'badge-danger';
+            }
+        }
+
         return view('livewire.admin.book-index', [
-            'data' => ($this->search == '')? Buku::latest()->where('user_id', Auth::user()->id)->where('jenis_id','!=', 3)->paginate(10) : Buku::latest()->where('judul','LIKE','%'.$this->search.'%')->where('user_id', Auth::user()->id)->where('jenis_id', '!=', 3)->paginate(10)
+            'data' => $data
         ]);
     }
 
@@ -49,6 +66,14 @@ class BookIndex extends Component
     {
         if($id){
             return redirect()->route('admin.book-update', $id);
+        }
+    }
+
+    public function kembali($id)
+    {
+        if($id){
+            Buku::find($id)->update(['status' => 0]);
+            session()->flash('message', array('type' => 'success', 'content' => 'Buku berhasil diaktifkan kembali'));
         }
     }
 }

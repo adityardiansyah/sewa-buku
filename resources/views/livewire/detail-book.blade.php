@@ -63,7 +63,7 @@
                         @endif
                         <br>
                     @endif
-                        <button type="button" class="btn btn-outline-danger btn-rounded btn-icon float-right {{ $favoritStatus ? 'active' : ''}}" wire:click="favorit({{ $id_buku }})">
+                        <button type="button" class="btn btn-outline-danger btn-rounded btn-icon float-right {{ $favoritStatus ? 'active' : ''}}" wire:click="favorit({{ $id_buku }})" data-toggle="tooltip" data-placement="top" title="Favorit">
                         <i class="mdi mdi-heart-outline"></i>
                     </button>
                     @if(!$bookingStatus)
@@ -73,7 +73,9 @@
                     @endif
                     <h3>{{ $judul }}</h3>
                     <h5>{{ $jenis->nama }}</h5>
+                    @if($jenis_id != 1)
                     <h2 class="harga">Rp {{ number_format($harga, 0,'.','.') }}</h2>
+                    @endif
                     <hr>
                     <b>Deskripsi</b>
                     <p>

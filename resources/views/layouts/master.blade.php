@@ -37,6 +37,10 @@
     </div>
     <script src="{{ asset('public/assets/js/jquery.js') }}"></script>
     <script src="{{ asset('public/assets/dist/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/assets/vendors/js/vendor.bundle.base.js') }}"></script>
+    <script src="{{ asset('public/assets/vendors/js/vendor.bundle.addons.js') }}"></script>
+    <script src="{{ asset('public/assets/js/tooltips.js') }} "></script>
+    <script src="{{ asset('public/assets/js/popover.js') }} "></script>
     @livewireScripts
     @yield('js')
     <script>
