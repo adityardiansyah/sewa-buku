@@ -4,6 +4,12 @@ body{
 nav{
     box-shadow: 0px 0px 3px rgb(197, 197, 197) !important;
 }
+.nav-photo{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 29%;
+    margin-left: 4px;
+}
 .cari{
     border: 1px solid #cfcfcf;
     border-radius: 25px;
@@ -72,4 +78,44 @@ nav{
 }
 .list ul a{
     text-decoration: none;
+}
+.starrating > input {display: none;} 
+
+.starrating > label:before{ 
+content: "\f005"; /* Star */
+margin: 2px;
+font-size: 1em;
+font-family: FontAwesome;
+/* display: inline-block;  */
+}
+
+.starrating > label
+{
+color: #222222; /* Start color when not clicked */
+}
+
+.starrating > input:checked ~ label
+{ color: #ffca08 ; } /* Set yellow color when star checked */
+
+.starrating > input:hover ~ label
+{ color: #ffca08 ;  } /* Set yellow color when star hover */
+
+.dis-starrating > input {display: none;} 
+
+.dis-starrating > label:before{ 
+content: "\f005"; /* Star */
+margin: 2px;
+font-size: 1em;
+font-family: FontAwesome;
+/* display: inline-block;  */
+}
+
+.dis-starrating > label
+{
+color: #ffca08; /* Start color when not clicked */
+}
+footer{
+    background: #111111;
+    padding:16px;
+    color:#fff;
 }

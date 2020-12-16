@@ -10,18 +10,11 @@
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.base.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/vendors/css/vendor.bundle.addons.css') }}">
     <link rel="stylesheet" href="{{ asset('public/assets/css/vertical-layout-light/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/assets/css/fontawesome-all.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/assets/vendors/iconfonts/font-awesome/css/font-awesome.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('public/assets/css/fontawesome-all.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('public/assets/css/style.css') }}">
     <script src="{{ asset('public/js/app.js') }}" defer></script>
     @yield('css')
-    <style>
-        .nav-photo{
-            border-radius: 50%;
-            overflow: hidden;
-            width: 30%;
-            margin-left: 4px;
-        }
-    </style>
     @livewireStyles
 </head>
 <body>
@@ -35,6 +28,7 @@
             </div>
         </div>
     </div>
+    @livewire('footer')
     <script src="{{ asset('public/assets/js/jquery.js') }}"></script>
     <script src="{{ asset('public/assets/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('public/assets/vendors/js/vendor.bundle.base.js') }}"></script>

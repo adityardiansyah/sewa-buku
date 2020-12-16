@@ -26,6 +26,7 @@ Route::livewire('/detail/{id}', 'detail-book')->layout('layouts.master')->name('
 
 // ---------------- DASHBOARD -------------------------
 Route::group(['middleware' => 'auth'], function () {
+    Route::livewire('/edit-profil', 'edit-profil')->layout('layouts.master')->name('edit-profil');
     Route::livewire('/booking', 'booking')->layout('layouts.master')->name('booking');
     Route::livewire('/admin/booking', 'admin.booking')->layout('layouts.admin')->name('admin.booking');
     Route::livewire('/favorit', 'favorit')->layout('layouts.master')->name('favorit');

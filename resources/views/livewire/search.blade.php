@@ -110,7 +110,7 @@
                                 <option value="penerbit" {{ $type == 'penerbit'? 'selected' : ''}}>Penerbit</option>
                                 <option value="author" {{ $type == 'author'? 'selected' : ''}}>Author</option>
                             </select>
-                            <input type="text" name="value" class="form-control form-control-sm" placeholder="cari disini ..." value="{{ $value }}">
+                            <input type="text" name="value" class="form-control form-control-sm" placeholder="cari disini ..." value="{{ $keyword }}">
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Cari</button>
                     </form>

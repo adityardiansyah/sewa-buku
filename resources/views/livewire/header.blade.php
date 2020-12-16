@@ -5,7 +5,8 @@
             aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="{{ url('/') }}">BOOKO</a>
+        {{-- <a class="navbar-brand" href="{{ url('/') }}">BOOKO</a> --}}
+        <a style="width: 12%;" href="{{ url('/') }}"><img class="navbar-brand" style="width:100%; padding: 8px;" src="{{ asset('public/assets/images/logo.png') }}" alt="logo" /></a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-4 mt-2 mt-lg-0">
@@ -42,9 +43,9 @@
                     <a class="dropdown-item" href="{{ url('/dashboard') }}"><i class="fa fa-user-secret mr-3"></i> Dashboard</a>
                     <a class="dropdown-item" href="{{ url('/booking') }}"><i class="fa fa-list mr-3"></i> Daftar Booking</a>
                         <a class="dropdown-item" href="{{ url('/favorit') }}"><i class="fa fa-heart mr-3"></i> Buku Favorit</a>
-                        <a class="dropdown-item" href="{{ url('/edit-profil') }}"><i class="fa fa-user-edit mr-3"></i> Edit Profil</a>
+                        <a class="dropdown-item" href="{{ url('/edit-profil') }}"><i class="fa fa-user mr-3"></i> Edit Profil</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                            <i class="fa fa-sign-out-alt mr-3"></i>
+                            <i class="fa fa-sign-out mr-3"></i>
                             Logout
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

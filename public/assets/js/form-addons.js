@@ -63,6 +63,11 @@
         showSelectedRating: false
       });
 
+      $('.bintang').barrating({
+        theme: 'fontawesome-stars',
+        showSelectedRating: false
+      });
+
       $('#example-css').barrating({
         theme: 'css-stars',
         showSelectedRating: false

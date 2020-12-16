@@ -38,7 +38,7 @@ class Daftar extends Component
         ]);
 
         if($user){
-            session()->flash('success','Daftar Akun Berhasil');
+            session()->flash('message', array('type' => 'success', 'content' => 'Daftar Akun Berhasil'));
             return redirect()->route('login');
         }
     }

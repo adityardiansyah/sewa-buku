@@ -2,10 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Barter;
 use App\Booking;
 use App\Buku;
 use App\Favorit;
 use App\Jenis;
+use App\Ulasan;
 use App\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,8 @@ class DetailBook extends Component
 {
     use AuthorizesRequests;
     public $id_buku, $judul, $author,$jenis, $image, $jenis_id, $kategori_id, $tahun, $jml_halaman, $harga, $penerbit, $deskripsi;
-    public $pemilik, $bookingStatus, $favoritStatus;
+    public $pemilik, $bookingStatus, $favoritStatus, $ulasan;
+    public $judul1, $author1, $image1, $image1_update, $tahun1, $penerbit1, $deskripsi1, $id_barter;
 
     public function render()
     {
@@ -40,7 +43,7 @@ class DetailBook extends Component
         $this->jenis = Jenis::find($this->jenis_id);
         $this->pemilik = User::find($data->user_id);
         if(!empty(Auth::user()->id)){
-            $booking = Booking::where('user_id', Auth::user()->id)->where('buku_id', $id)->first();
+            $booking = Booking::where('user_id', Auth::user()->id)->where('buku_id', $id)->where('status', 0)->first();
             $favorit = Favorit::where('buku_id', $id)->where('user_id', Auth::user()->id)->first();
         }else{
             $booking = '';
@@ -49,6 +52,18 @@ class DetailBook extends Component
         $this->bookingStatus = empty($booking)? TRUE : FALSE;
         $this->favoritStatus = !empty($favorit)? TRUE : FALSE;
 
+        if($this->jenis_id == 3){
+            $barter = Barter::where('buku_id', $id)->first();
+            $this->id_barter = $barter->id;
+            $this->image1 = json_decode($barter->gambar);
+            $this->judul1 = $barter->judul;
+            $this->author1 = $barter->author;
+            $this->tahun1 = $barter->tahun;
+            $this->penerbit1 = $barter->penerbit;
+            $this->deskripsi1 = $barter->deskripsi;
+        }
+        $this->ulasan = Ulasan::select('ulasan.*','user.nama')->leftJoin('user','user.id','ulasan.user_id')->where('buku_id', $id)->get();
+        
     }
 
     public function booking()

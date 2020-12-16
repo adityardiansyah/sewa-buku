@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Buku;
 use App\Category;
+use App\Jenis;
+use App\User;
 use Illuminate\Http\Request;
 use Str;
 
@@ -14,7 +16,7 @@ class HomeController extends Controller
         $search = $request->search;
         $cari_kategori = $request->cari_kategori;
         $type = $request->type;
-        $value = $request->value;
+        $keyword = $request->value;
         
         $data = Buku::latest()->where('judul', 'LIKE', '%' . $search . '%');
         
@@ -33,9 +35,13 @@ class HomeController extends Controller
             $image = json_decode($value->gambar, TRUE);
             $value->image = !empty($image[0]) ? $image[0] : '';
             $value->slug = Str::slug($value->judul);
+            $jenis = Jenis::find($value->jenis_id);
+            $pemilik = User::find($value->user_id);
+            $value->jenis = $jenis->nama;
+            $value->kota = $pemilik->kota;
         }
         $kategori = Category::orderBy('nama','asc')->get();
-        return view('livewire.search', compact('data','search','kategori','cari_kategori','type','value'));
+        return view('livewire.search', compact('data','search','kategori','cari_kategori','type', 'keyword'));
     }
 
     public function kategori($slug)
@@ -48,6 +54,10 @@ class HomeController extends Controller
             $image = json_decode($value->gambar, TRUE);
             $value->image = !empty($image[0]) ? $image[0] : '';
             $value->slug = Str::slug($value->judul);
+            $jenis = Jenis::find($value->jenis_id);
+            $pemilik = User::find($value->user_id);
+            $value->jenis = $jenis->nama;
+            $value->kota = $pemilik->kota;
         }
 
         return view('livewire.kategori', compact('kategori','keyword', 'data','cari_kategori'));
