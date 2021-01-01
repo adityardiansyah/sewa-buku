@@ -100,7 +100,7 @@
                                             <input type="text" class="form-control" wire:model="jml_halaman" placeholder="Jumlah Halaman" required>
                                             </div>
                                         </div>
-                                        @if($jenis_id == 2)
+                                        @if($jenis_id == 2 || $jenis_id == 4)
                                         <div class="col-4">
                                             <div class="form-group">
                                             <label for="">Harga Sewa</label>

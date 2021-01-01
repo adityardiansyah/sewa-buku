@@ -18,7 +18,7 @@ class BookCreate extends Component
     {
         return view('livewire.admin.book-create',[
             'kategori' => Category::get(),
-            'jenis' => Jenis::whereIn('id',[1,2])->get()
+            'jenis' => Jenis::where('id','!=', 3)->get()
         ]);
     }
 

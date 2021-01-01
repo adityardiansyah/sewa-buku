@@ -89,7 +89,7 @@
                                             </div>
                                         </div>
                                         <div class="col-4">
-                                            <div class="form-group">
+                                            <div class="form-group"  wire:ignore>
                                             <label for="">Jenis Buku</label>
                                             <select class="form-control form-control-lg" id="" wire:model="jenis_id" required>
                                                 <option value="0" {{ '0' == $jenis_id? 'selected': '' }}>Tidak Ada</option>

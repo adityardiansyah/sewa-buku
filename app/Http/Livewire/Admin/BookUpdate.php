@@ -49,7 +49,6 @@ class BookUpdate extends Component
             'author' => 'required',
             'tahun' => 'required',
             'jml_halaman' => 'required',
-            'harga' => 'required',
             'penerbit' => 'required',
             'deskripsi' => 'required',
             'status' => 'required',

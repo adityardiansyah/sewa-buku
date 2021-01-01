@@ -84,7 +84,7 @@
                         </a>
                         <div class="collapse" id="add-buku">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="{{ url('book-create') }}">Sewa / Pinjaman</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="{{ url('book-create') }}">Sewa/Pinjam/Jual</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="{{ url('book-barter-create') }}">Tukar Buku / Barter</a></li>
                             </ul>
                         </div>

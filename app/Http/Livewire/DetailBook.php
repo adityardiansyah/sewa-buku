@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Barter;
 use App\Booking;
 use App\Buku;
+use App\Category;
 use App\Favorit;
 use App\Jenis;
 use App\Ulasan;
@@ -17,7 +18,7 @@ class DetailBook extends Component
 {
     use AuthorizesRequests;
     public $id_buku, $judul, $author,$jenis, $image, $jenis_id, $kategori_id, $tahun, $jml_halaman, $harga, $penerbit, $deskripsi;
-    public $pemilik, $bookingStatus, $favoritStatus, $ulasan;
+    public $pemilik, $bookingStatus, $favoritStatus, $ulasan, $kategori;
     public $judul1, $author1, $image1, $image1_update, $tahun1, $penerbit1, $deskripsi1, $id_barter;
 
     public function render()
@@ -51,6 +52,7 @@ class DetailBook extends Component
         }
         $this->bookingStatus = empty($booking)? TRUE : FALSE;
         $this->favoritStatus = !empty($favorit)? TRUE : FALSE;
+        $this->kategori = Category::find($data['kategori_id']);
 
         if($this->jenis_id == 3){
             $barter = Barter::where('buku_id', $id)->first();

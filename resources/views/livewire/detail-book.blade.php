@@ -199,10 +199,25 @@
                         </span>
                         @endif
                         <h3>{{ $judul }}</h3>
-                        <h5>{{ $jenis->nama }}</h5>
+                        <h5 class="badge badge-info rounded">{{ $jenis->nama }}</h5>
                         @if($jenis_id != 1)
                         <h2 class="harga">Rp {{ number_format($harga, 0,'.','.') }}</h2>
                         @endif
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p style="font-size: 10pt;">
+                                    <b>Penulis : </b> <span>{{ $author }}</span><br>
+                                    <b>Penerbit : </b> <span>{{ $penerbit }}</span><br>
+                                    <b>Kategori : </b> <span>{{ $kategori->nama }}</span>
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <p style="font-size: 10pt;">
+                                    <b>Jumlah Halaman : </b> <span>{{ $jml_halaman }}</span><br>
+                                    <b>Tahun : </b> <span>{{ $tahun }}</span><br>
+                                </p>
+                            </div>
+                        </div>
                         <hr>
                         <b>Deskripsi</b>
                         <p>

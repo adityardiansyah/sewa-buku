@@ -32,16 +32,16 @@
                                 @endif
                                 <br>
                             @endif
-                            <div class="table-responsive">
+                            <div class="table-responsive" style="font-size: 11pt;">
                                 <table class="table table-hover">
                                 <thead>
                                     <tr>
+                                    <th>Jenis</th>
                                     <th>Judul Buku</th>
                                     <th>Kategori</th>
                                     <th>Author</th>
                                     <th>Penerbit</th>
-                                    <th>Tahun</th>
-                                    <th>Jumlah Halaman</th>
+                                    <th>Jml. Halaman</th>
                                     <th>Harga</th>
                                     <th>Status</th>
                                     <th></th>
@@ -50,11 +50,11 @@
                                 <tbody>
                                     @forelse ($data as $item)
                                     <tr>
-                                        <td>{{ $item->judul }}</td>
+                                        <td>{{ $item->jenis->nama }}</td>
+                                        <td>{{ $item->judul }} ({{ $item->tahun }})</td>
                                         <td>{{ $item->kategori->nama }}</td>
                                         <td>{{ $item->author }}</td>
                                         <td>{{ $item->penerbit }}</td>
-                                        <td>{{ $item->tahun }}</td>
                                         <td>{{ $item->jml_halaman }}</td>
                                         <td>{{ $item->harga }}</td>
                                         <td><span class="badge {{ $item->badge_booking }}">{{ $item->status_bookings }}</span></td>

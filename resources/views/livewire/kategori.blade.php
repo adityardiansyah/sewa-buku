@@ -73,7 +73,7 @@
                             <a href="{{ url('detail/'.$item->id) }}" class="judul"><h5>{{ $item->judul }}</h5></a>
                             <span style="font-size: 11pt; font-weight: lighter;">{{ $item->jenis }}</span>
                             <h5 class="text-primary">Rp {{ number_format($item->harga, 0,'.','.') }}</h5>
-                            <p class="card-text text-right" style="font-size: 10pt;"><i class="fa fa-map-marker-alt"></i> {{ $item->kota }}</p>
+                            <p class="card-text text-right" style="font-size: 10pt;"><i class="fa fa-map-marker"></i> {{ $item->kota }}</p>
                         </div>
                     </div>
                 </div>

@@ -25,7 +25,7 @@ class Login extends Component
     {
         $this->validate([
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ]);
 
         if(Auth::attempt(['email' => $this->email, 'password' => $this->password])){
@@ -41,8 +41,8 @@ class Login extends Component
                 }
             }
         }else{
-            session()->flash('error','Alamat Email atau Password anda salah!');
-            return redirect()->route('login');
+            session()->flash('message', array('type' => 'error', 'content' => 'Alamat Email atau Password anda salah!'));
+            return redirect()->back();
         }
     }
 
